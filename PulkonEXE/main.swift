@@ -44,6 +44,35 @@ print (isArraySorted(array: zmienna3, condition: five))
 print (isArraySorted(array: zmienna3, condition: up))
 print (isArraySorted(array: zmienna, condition: down))
 print (isArraySorted(array: zmienna2, condition: five))
+
+struct Stats
+{
+    var Max : Int
+    var Min : Int
+    init(maks : Int, min : Int) {
+        self.Min = min
+        self.Max = maks
+    }
+}
+
+func MinMax(array : [Int]) -> Stats
+{
+    var Min = array[0]
+    var max = array[0]
+    for elem in array {
+        if elem < Min {
+            Min = elem
+        } else if elem > max {
+            max = elem
+        }
+    }
+    
+    return Stats(maks: max,min: Min)
+    
+    
+}
+var array1 : [Int] =  [1,2,3,4,5,6,1]
+
+var stats1 : Stats = MinMax(array: array1)
+print("MIN : \(stats1.Min) MAX : \(stats1.Max)")
 */
-
-
