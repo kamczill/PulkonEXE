@@ -80,14 +80,39 @@ print("MIN : \(stats1.Min) MAX : \(stats1.Max)")
 struct StatCalculator
 {
     
-    var array1 : [Int] = [1,2,3,4,56]
+    var array : [Int]
     
     init (array : [Int])
     {
-        self.array1 = array
+        self.array = array
     }
     
-    func getMinMax(array: [Int])-> Stats
+    func getMinMax()-> Stats
+    {
+        var Min = self.array[0]
+        var max = self.array[0]
+        for elem in self.array {
+            if elem < Min {
+                Min = elem
+            } else if elem > max {
+                max = elem
+            }
+        }
+        
+        return Stats(maks: max,min: Min)
+        
+        
+    }
+}
+
+
+var calc : StatCalculator = StatCalculator(array : array1)
+var wyniki = calc.getMinMax()
+print (wyniki)
+
+struct StatCalc2
+{
+   static func getMinMax(array : [Int])-> Stats
     {
         var Min = array[0]
         var max = array[0]
@@ -104,4 +129,7 @@ struct StatCalculator
         
     }
 }
-*/
+
+var wyn = StatCalc2.getMinMax(array: array1)
+print (" STATIC : \(wyn)")
+ */
