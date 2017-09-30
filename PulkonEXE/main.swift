@@ -108,7 +108,7 @@ struct StatCalculator
 
 var calc : StatCalculator = StatCalculator(array : array1)
 var wyniki = calc.getMinMax()
-print (wyniki)
+print ("ZWYKŁE : \(wyniki)")
 
 struct StatCalc2
 {
@@ -131,5 +131,49 @@ struct StatCalc2
 }
 
 var wyn = StatCalc2.getMinMax(array: array1)
-print (" STATIC : \(wyn)")
+print ("STATIC : \(wyn)")
+
+class Wielokat
+{
+ 
+    var liczbaBokow : Int = 0
+    
+    func simpleDescription()
+        {
+            print ("Jestem wielokatem i mam \(self.liczbaBokow) boków")
+        }
+}
+
+
+
+class Kwadrat : Wielokat
+{
+    
+    init(iloscBokow: Int) {
+        super.init()
+        self.liczbaBokow = iloscBokow
+    }
+    
+    override func simpleDescription() {
+         print ("Jestem kwadratem i mam \(self.liczbaBokow) boków ")
+        
+    }
+}
+class Trojkat : Wielokat
+{
+    
+    init(iloscBokow: Int) {
+        super.init()
+        self.liczbaBokow = iloscBokow
+    }
+    
+    override func simpleDescription() {
+        print ("Jestem trójkątem i mam \(self.liczbaBokow) boków ")
+        
+    }
+}
+var square : Kwadrat = Kwadrat(iloscBokow: 4)
+print (square.simpleDescription())
+var triangle : Trojkat = Trojkat(iloscBokow: 3)
+print (triangle.simpleDescription())
  */
