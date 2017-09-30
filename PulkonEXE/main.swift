@@ -8,5 +8,15 @@
 
 import Foundation
 
-print("Hello, World!")
-print ("PULKON")
+func isArraySorted(array: [Int]) -> Bool{
+     for i in 0..<array.count-1
+    {
+        if array[i] > array[i+1]
+        {
+        return false
+        }
+    }
+   return true
+}
+var Tablica : [Int] = [1,2,3,4,5]
+print (isArraySorted(array: Tablica))
