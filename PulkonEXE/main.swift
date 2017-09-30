@@ -1,22 +1,22 @@
-//
-//  main.swift
-//  PulkonEXE
-//
-//  Created by Kamil Chrobak on 30.09.2017.
-//  Copyright © 2017 Kamil Chrobak. All rights reserved.
-//
-
 import Foundation
-
-func isArraySorted(array: [Int]) -> Bool{
-     for i in 0..<array.count-1
-    {
-        if array[i] > array[i+1]
-        {
-        return false
+/*
+func isArraySorted(array: [Int],condition : (Int, Int)->Bool)-> Bool
+{
+    for i in 0..<array.count-1 {
+        if array[i] > array[i+1] {
+            return false
         }
-    }
-   return true
+       }
+    return true
 }
-var Tablica : [Int] = [1,2,3,4,5]
-print (isArraySorted(array: Tablica))
+let random : (Int , Int)-> Bool = {(arg1 : Int,arg2 : Int) -> Bool in
+   
+    if  arg1 < arg2
+    {
+        return true
+    }
+    return false
+}
+var zmienna : [Int] = [1,2,3]
+print (isArraySorted(array: zmienna, condition: random))
+*/
