@@ -132,48 +132,202 @@ struct StatCalc2
 
 var wyn = StatCalc2.getMinMax(array: array1)
 print ("STATIC : \(wyn)")
-
-class Wielokat
-{
- 
-    var liczbaBokow : Int = 0
-    
+*/
+protocol Wielokat {
+    var liczbaBokow : Int {get set}
     func simpleDescription()
-        {
-            print ("Jestem wielokatem i mam \(self.liczbaBokow) boków")
-        }
 }
-
-
-
-class Kwadrat : Wielokat
+protocol  Printable {
+    func getDescription()->String
+}
+extension Printable
 {
-    
+    func getDescription()->String
+    {
+        return "Default"
+    }
+}
+class Kwadrat : Wielokat,Printable
+{
+    var liczbaBokow: Int
     init(iloscBokow: Int) {
-        super.init()
+      
         self.liczbaBokow = iloscBokow
     }
     
-    override func simpleDescription() {
-         print ("Jestem kwadratem i mam \(self.liczbaBokow) boków ")
+    func simpleDescription() {
+         print ("Jestem kwadratem i mam \(self.liczbaBokow) boki ")
         
     }
+    //func getDescription() -> String {
+      //  return "Jestem Kwadrat"
+    //}
+
 }
-class Trojkat : Wielokat
+class Trojkat : Wielokat,Printable
 {
     
+
+    var liczbaBokow: Int
     init(iloscBokow: Int) {
-        super.init()
+        
         self.liczbaBokow = iloscBokow
     }
     
-    override func simpleDescription() {
-        print ("Jestem trójkątem i mam \(self.liczbaBokow) boków ")
+     func simpleDescription() {
+        print ("Jestem trójkątem i mam \(self.liczbaBokow) boki ")
         
     }
+    func getDescription() -> String {
+        return "Jestem Trójkąt"
+    }
 }
-var square : Kwadrat = Kwadrat(iloscBokow: 4)
-print (square.simpleDescription())
-var triangle : Trojkat = Trojkat(iloscBokow: 3)
-print (triangle.simpleDescription())
- */
+var figury : [Wielokat] = [Kwadrat(iloscBokow: 4 ) ,Trojkat(iloscBokow: 3)]
+for item in figury
+{
+    print(item.simpleDescription())
+}
+
+func myPrint(_ printer : Printable)
+{
+print(printer.getDescription())
+}
+var qwadrat : Kwadrat = Kwadrat(iloscBokow : 4)
+var triangle : Trojkat = Trojkat(iloscBokow : 3)
+myPrint(qwadrat)
+myPrint(triangle)
+
+
+
+/*
+ person
+ -name:string
+ -address:string
+ 
+ 
+ student:person
+ -program:string
+ -year:int
+ -free:double
+ 
+ staff:person
+ -school:String
+ -pay:double
+ 
+class Person
+{
+    var name :String
+    var adress :String
+    
+    init(name :String, adress: String) {
+        self.name = name
+        self.adress = adress
+    }
+    static func getPlanetName() -> String
+    {
+        return "Ziemia"
+    }
+    func Wypisz()
+    {
+        print("IMIE : \(name) ADRESS : \(adress)")
+    }
+   
+}
+class Student : Person
+{
+    var program : String
+    var year : Int
+    var free : Double
+    
+    init(name : String,adress : String ,program : String,year : Int, free : Double)
+    {
+        self.program = program
+        self.year = year
+        self.free = free
+        super.init(name: name, adress: adress)
+    }
+    override func Wypisz()
+    {
+    print("IMIE : \(name) ADRESS : \(adress) PROGRAM : \(program) YEAR : \(year) FREE : \(free)")
+    }
+    
+}
+class Staff: Person
+{
+    var school :String
+    var pay : Double
+    init(name :String,adress : String,school: String,pay: Double) {
+        self.school = school
+        self.pay = pay
+        super.init(name: name, adress: adress)
+    }
+   override func Wypisz()
+    {
+        print("IMIE : \(name) ADRESS : \(adress) SCHOOL : \(school) PAY : \(pay)")
+    }
+    
+}
+
+var student1: Student = Student(name: "Kamil", adress : "Podsarnie", program : "Informatyka",year: 18,free: 1)
+var staw : Staff = Staff(name : "Jan",adress : "Olszówka",school : "technikum",pay: 210)
+var persona1 : [Person] = [student1,staw]
+for item in persona1
+{
+item.Wypisz()
+}
+var planeta = Person.getPlanetName()
+print(planeta)
+
+ klasa autor name,email,gender
+klasa book name author  price id_ksiazki
+ 
+enum Gender: String {
+case male = "male"
+case female = "female"
+}
+class Autor
+{
+    var name : String
+    var email : String
+    var gender : Gender
+    init(name : String , email : String , gender : Gender) {
+        self.name = name
+        self.email = email
+        self.gender = gender
+    }
+
+}
+
+class Book
+{
+    var name: String
+    var author: Autor
+    var price:Int
+    var id_ksiazki: Int
+    static var bookAmount : Int = 0
+    init(name: String, price: Int, id_ksiazki: Int,autor : Autor)
+    {
+        Book.bookAmount+=1
+        self.name = name
+        self.price = price
+        self.id_ksiazki = id_ksiazki
+        self.author = autor
+    }
+}
+
+var ksiazka : Book = Book(name : "Harry Potter", price : 66, id_ksiazki: 1 ,autor: Autor(name: "Jan Gil",email: "giljan@kamczil.net",gender : Gender.male) )
+print("\(ksiazka.id_ksiazki) \(ksiazka.name) \(ksiazka.price) \(ksiazka.author.name) \(ksiazka.author.email) \(ksiazka.author.gender)")
+
+var giljon: Book = Book(name: "Matematyka rozszerzona", price: 69, id_ksiazki: 2, autor: Autor(name: "Anna worwa szybsza niz wyglada", email: "no@no.no", gender: Gender.female))
+print("\(giljon.id_ksiazki) \(giljon.name) \(giljon.price) \(giljon.author.name) \(giljon.author.email) \(giljon.author.gender)")
+
+var kamczil: Book = Book(name: "Golf 5 w gazie", price: 120, id_ksiazki: 3, autor: Autor(name: "Kamczill aka fighter", email: "kamczil@no.no", gender: Gender.male))
+print("\(kamczil.id_ksiazki) \(kamczil.name) \(kamczil.price) \(kamczil.author.name) \(kamczil.author.email) \(kamczil.author.gender)")
+
+
+print("Ilość sprzedanych książek : \(Book.bookAmount)")
+
+
+*/
+
+
