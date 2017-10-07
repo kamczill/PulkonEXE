@@ -132,7 +132,7 @@ struct StatCalc2
 
 var wyn = StatCalc2.getMinMax(array: array1)
 print ("STATIC : \(wyn)")
-*/
+
 protocol Wielokat {
     var liczbaBokow : Int {get set}
     func simpleDescription()
@@ -197,7 +197,7 @@ var triangle : Trojkat = Trojkat(iloscBokow : 3)
 myPrint(qwadrat)
 myPrint(triangle)
 
-
+*/
 
 /*
  person
@@ -330,4 +330,100 @@ print("Ilość sprzedanych książek : \(Book.bookAmount)")
 
 */
 
+/*
+protocol Movable {
+    func MoveUp()
+    func MoveDown()
+    func MoveLeft()
+    func MoveRight()
+}
+
+class MovablePoint: Movable
+{
+    var x : Int
+    var y : Int
+    var xSpeed : Int
+    var ySpeed : Int
+    init(_ x : Int, _ y : Int, _ xSpeed : Int, _ ySpeed : Int) {
+        self.x = x
+        self.y = y
+        self.xSpeed = xSpeed
+        self.ySpeed = ySpeed
+        
+    }
+    func MoveUp() {
+        y+=ySpeed
+    }
+    func MoveDown() {
+        y-=ySpeed
+    }
+    func MoveLeft() {
+        x-=xSpeed
+    }
+    func MoveRight() {
+        x+=xSpeed
+    }
+}
+
+class MovableCircle : Movable
+{
+    var radius : Int
+    var center : MovablePoint
+    init(_ center : MovablePoint, _ radius : Int) {
+        self.radius = radius
+        self .center = center
+    }
+  
+    func MoveUp() {
+        center.y+=center.ySpeed
+    }
+    func MoveDown() {
+        center.y-=center.ySpeed
+    }
+    func MoveLeft() {
+        center.x-=center.xSpeed
+    }
+    func MoveRight() {
+        center.x+=center.xSpeed
+    }
+}
+var punkt : MovablePoint = MovablePoint(0,0,1,1)
+var kolko : MovableCircle = MovableCircle(punkt,4)
+print("\(punkt.x),\(punkt.y)")
+kolko.MoveUp()
+print("Idę w góre")
+print("\(punkt.x),\(punkt.y)")
+kolko.MoveRight()
+print("Idę w prawo")
+print("\(punkt.x),\(punkt.y)")
+kolko.MoveDown()
+print("Idę w dół")
+print("\(punkt.x),\(punkt.y)")
+kolko.MoveDown()
+print("Idę w dół")
+print("\(punkt.x),\(punkt.y)")
+
+*/
+
+protocol GeometricObject{
+    
+    func getPerimeter()->Double
+    func getArea()->Double
+    
+    
+}
+
+class Circle: GeometricObject{
+    
+    var radius: Double = 1.0
+    init(radius : Double ) {
+    self.radius = radius
+    }
+    func getPerimeter() -> Double {
+    return
+    }
+    func getArea() -> Double {
+        
+    }
+}
 
