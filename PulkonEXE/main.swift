@@ -428,7 +428,7 @@ class Circle: GeometricObject{
         return Double.pi * radius * radius
     }
 }
-class ResizableCircle : Circle , Resizable
+extension Circle : Resizable
 {
    
     func resize(procent : Double) {
@@ -437,8 +437,10 @@ class ResizableCircle : Circle , Resizable
     }
     
 }
-var kolko : ResizableCircle = ResizableCircle(radius : 2)
+var kolko : Circle = Circle(radius : 2)
 kolko.resize(procent: 1)
-print("Pole : \(kolko.getArea()) cm^2")
-
+var kolko2 : Circle = Circle(radius : 4)
+kolko2.resize(procent: 20)
+print("Pole kola1 to  : \(kolko.getArea()) cm^2")
+print("Pole kola2 to : \(kolko2.getArea()) cm2")
 */
