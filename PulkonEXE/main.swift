@@ -403,7 +403,7 @@ kolko.MoveDown()
 print("Idę w dół")
 print("\(punkt.x),\(punkt.y)")
 
-*/
+
 
 protocol GeometricObject{
     
@@ -412,7 +412,9 @@ protocol GeometricObject{
     
     
 }
-
+protocol  Resizable{
+    func resize (procent : Double)
+}
 class Circle: GeometricObject{
     
     var radius: Double = 1.0
@@ -420,10 +422,23 @@ class Circle: GeometricObject{
     self.radius = radius
     }
     func getPerimeter() -> Double {
-    return
+        return 2 * radius
     }
     func getArea() -> Double {
-        
+        return Double.pi * radius * radius
     }
 }
+class ResizableCircle : Circle , Resizable
+{
+   
+    func resize(procent : Double) {
+        
+       radius =  radius + (radius * procent / 100)
+    }
+    
+}
+var kolko : ResizableCircle = ResizableCircle(radius : 2)
+kolko.resize(procent: 1)
+print("Pole : \(kolko.getArea()) cm^2")
 
+*/
